@@ -333,12 +333,12 @@ class GedcomGenerator
         $indi->setSex($sex);
 
         if ($person->birthday || $person->birth_year) {
-            $birt = $person->birthday ? strtoupper($person->birthday->format('j M Y')) : $person->birth_year;
+            $birt = $person->birthday ? strtoupper(Carbon::createFromFormat('Y-m-d', $person->birthday)->format('j M Y')) : $person->birth_year;
             $indi->setBirt($birt);
         }
 
         if ($person->deathday || $person->death_year) {
-            $deat = $person->deathday ? strtoupper($person->deathday->format('j M Y')) : $person->death_year;
+            $deat = $person->deathday ? strtoupper(Carbon::createFromFormat('Y-m-d', $person->deathday)->format('j M Y')) : $person->death_year;
             $indi->setDeat($deat);
         }
 
